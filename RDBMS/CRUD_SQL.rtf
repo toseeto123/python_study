@@ -1,0 +1,634 @@
+{\rtf1\ansi\ansicpg949\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf0 \cb2 \expnd0\expndtw0\kerning0
+Last login: Tue Jun 27 16:50:32 on ttys002\
+ namsukim@gimnamsuui-MacBookAir \uc0\u57520  ~ \u57520  \u57504  main \'b1\u57520 \
+\uc0\u57520  mysql -u root -p\
+Enter password:\
+Welcome to the MariaDB monitor.  Commands end with ; or \\g.\
+Your MariaDB connection id is 9\
+Server version: 10.10.2-MariaDB Homebrew\
+\
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.\
+\
+Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.\
+\
+MariaDB [(none)]> use mydata\
+Reading table information for completion of table and column names\
+You can turn off this feature to get a quicker startup with -A\
+\
+Database changed\
+MariaDB [mydata]> show tables;\
++------------------+\
+| Tables_in_mydata |\
++------------------+\
+| myproduct        |\
++------------------+\
+1 row in set (0.001 sec)\
+\
+MariaDB [mydata]> desc myproduct\
+    -> ;\
++------------------+------------------+------+-----+---------+----------------+\
+| Field            | Type             | Null | Key | Default | Extra          |\
++------------------+------------------+------+-----+---------+----------------+\
+| mykey            | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| productid        | text             | YES  |     | NULL    |                |\
+| title            | text             | YES  |     | NULL    |                |\
+| ori_price        | int(11)          | YES  |     | NULL    |                |\
+| discount_price   | int(11)          | YES  |     | NULL    |                |\
+| discount_percent | int(11)          | YES  |     | NULL    |                |\
+| delevery         | text             | YES  |     | NULL    |                |\
++------------------+------------------+------+-----+---------+----------------+\
+7 rows in set (0.006 sec)\
+\
+MariaDB [mydata]> CREATE TABLE mytable (\
+    ->     no INT UNSIGNED NOT NULL AUTO_INCREMENT,\
+    ->     name CHAR(20) NOT NULL,\
+    ->     age TINYINT,\
+    ->     phone VARCHAR(20),\
+    ->     email VARCHAR(30) NOT NULL,\
+    ->     address VARCHAR(50),\
+    ->     PRIMARY KEY(id)\
+    -> )default charset=utf8;\
+ERROR 1072 (42000): Key column 'id' doesn't exist in table\
+MariaDB [mydata]> CREATE TABLE mytable (     no INT UNSIGNED NOT NULL AUTO_INCREMENT,     name CHAR(20) NOT NULL,     age TINYINT,     phone VARCHAR(20),     email VARCHAR(30) NOT NULL,     address VARCHAR(50),     PRIMARY KEY(no) )default charset=utf8;\
+Query OK, 0 rows affected (0.023 sec)\
+\
+MariaDB [mydata]> desc mytable\
+    -> ;\
++---------+------------------+------+-----+---------+----------------+\
+| Field   | Type             | Null | Key | Default | Extra          |\
++---------+------------------+------+-----+---------+----------------+\
+| no      | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| name    | char(20)         | NO   |     | NULL    |                |\
+| age     | tinyint(4)       | YES  |     | NULL    |                |\
+| phone   | varchar(20)      | YES  |     | NULL    |                |\
+| email   | varchar(30)      | NO   |     | NULL    |                |\
+| address | varchar(50)      | YES  |     | NULL    |                |\
++---------+------------------+------+-----+---------+----------------+\
+6 rows in set (0.004 sec)\
+\
+MariaDB [mydata]> alter table mytable add column model_type varchar(10) not null;\
+Query OK, 0 rows affected (0.040 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+MariaDB [mydata]> alter table mytable modify column model_type varchar(20) not null;\
+Query OK, 0 rows affected (0.033 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+MariaDB [mydata]> alter table mytable modify column name varchar(20) not null;\
+Query OK, 0 rows affected (0.042 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+MariaDB [mydata]> desc mytable;\
++------------+------------------+------+-----+---------+----------------+\
+| Field      | Type             | Null | Key | Default | Extra          |\
++------------+------------------+------+-----+---------+----------------+\
+| no         | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| name       | varchar(20)      | NO   |     | NULL    |                |\
+| age        | tinyint(4)       | YES  |     | NULL    |                |\
+| phone      | varchar(20)      | YES  |     | NULL    |                |\
+| email      | varchar(30)      | NO   |     | NULL    |                |\
+| address    | varchar(50)      | YES  |     | NULL    |                |\
+| model_type | varchar(20)      | NO   |     | NULL    |                |\
++------------+------------------+------+-----+---------+----------------+\
+7 rows in set (0.005 sec)\
+\
+MariaDB [mydata]> alter table mytable change column name username varchar(10) not null;\
+Query OK, 0 rows affected (0.039 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+MariaDB [mydata]> desc mytable;\
++------------+------------------+------+-----+---------+----------------+\
+| Field      | Type             | Null | Key | Default | Extra          |\
++------------+------------------+------+-----+---------+----------------+\
+| no         | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| username   | varchar(10)      | NO   |     | NULL    |                |\
+| age        | tinyint(4)       | YES  |     | NULL    |                |\
+| phone      | varchar(20)      | YES  |     | NULL    |                |\
+| email      | varchar(30)      | NO   |     | NULL    |                |\
+| address    | varchar(50)      | YES  |     | NULL    |                |\
+| model_type | varchar(20)      | NO   |     | NULL    |                |\
++------------+------------------+------+-----+---------+----------------+\
+7 rows in set (0.004 sec)\
+\
+MariaDB [mydata]> CREATE TABLE mytable (\
+    ->     id INT UNSIGNED NOT NULL AUTO_INCREMENT,\
+    ->   name VARCHAR(50) NOT NULL,\
+    ->  modelnumber VARCHAR(15) NOT NULL,\
+    -> series VARCHAR(30) NOT NULL,\
+    -> PRIMARY KEY(id)\
+    -> );\
+ERROR 1050 (42S01): Table 'mytable' already exists\
+MariaDB [mydata]> drop table mytable;\
+Query OK, 0 rows affected (0.028 sec)\
+\
+MariaDB [mydata]> CREATE TABLE mytable (\
+    ->     id INT UNSIGNED NOT NULL AUTO_INCREMENT,\
+    ->   name VARCHAR(50) NOT NULL,\
+    ->  modelnumber VARCHAR(15) NOT NULL,\
+    -> series VARCHAR(30) NOT NULL,\
+    -> PRIMARY KEY(id)\
+    -> );\
+Query OK, 0 rows affected (0.019 sec)\
+\
+MariaDB [mydata]> alter table mytable modify column name varchar(20) not null;\
+Query OK, 0 rows affected (0.039 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+MariaDB [mydata]> desc mytable;\
++-------------+------------------+------+-----+---------+----------------+\
+| Field       | Type             | Null | Key | Default | Extra          |\
++-------------+------------------+------+-----+---------+----------------+\
+| id          | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| name        | varchar(20)      | NO   |     | NULL    |                |\
+| modelnumber | varchar(15)      | NO   |     | NULL    |                |\
+| series      | varchar(30)      | NO   |     | NULL    |                |\
++-------------+------------------+------+-----+---------+----------------+\
+4 rows in set (0.006 sec)\
+\
+MariaDB [mydata]> alter table mytable change column modelnumber model_num varchar(10) not null;\
+Query OK, 0 rows affected (0.031 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+MariaDB [mydata]> desc mytable;\
++-----------+------------------+------+-----+---------+----------------+\
+| Field     | Type             | Null | Key | Default | Extra          |\
++-----------+------------------+------+-----+---------+----------------+\
+| id        | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| name      | varchar(20)      | NO   |     | NULL    |                |\
+| model_num | varchar(10)      | NO   |     | NULL    |                |\
+| series    | varchar(30)      | NO   |     | NULL    |                |\
++-----------+------------------+------+-----+---------+----------------+\
+4 rows in set (0.004 sec)\
+\
+MariaDB [mydata]> alter table mytable change column series model_type varchar(10) not null;\
+Query OK, 0 rows affected (0.038 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+MariaDB [mydata]> des mytable;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'des mytable' at line 1\
+MariaDB [mydata]> desc mytable;\
++------------+------------------+------+-----+---------+----------------+\
+| Field      | Type             | Null | Key | Default | Extra          |\
++------------+------------------+------+-----+---------+----------------+\
+| id         | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| name       | varchar(20)      | NO   |     | NULL    |                |\
+| model_num  | varchar(10)      | NO   |     | NULL    |                |\
+| model_type | varchar(10)      | NO   |     | NULL    |                |\
++------------+------------------+------+-----+---------+----------------+\
+4 rows in set (0.003 sec)\
+\
+MariaDB [mydata]> create table model_info (\
+    -> id int unsigned not null auto_increment,\
+    -> name varchar(20) not null,\
+    -> model_num varchar(10) not null,\
+    -> model_type varchar(10) not null,\
+    -> primary key(id),\
+    -> )default charset=utf8;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')default charset=utf8' at line 7\
+MariaDB [mydata]> create table model_info ( id int unsigned not null auto_increment, name varchar(20) not null, model_num varchar(10) not null, model_type varchar(10) not null, primary key(id) )default charset=utf8;\
+Query OK, 0 rows affected (0.018 sec)\
+\
+MariaDB [mydata]> desc model_info\
+    -> ;\
++------------+------------------+------+-----+---------+----------------+\
+| Field      | Type             | Null | Key | Default | Extra          |\
++------------+------------------+------+-----+---------+----------------+\
+| id         | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| name       | varchar(20)      | NO   |     | NULL    |                |\
+| model_num  | varchar(10)      | NO   |     | NULL    |                |\
+| model_type | varchar(10)      | NO   |     | NULL    |                |\
++------------+------------------+------+-----+---------+----------------+\
+4 rows in set (0.005 sec)\
+\
+MariaDB [mydata]> drop table mytable;\
+Query OK, 0 rows affected (0.020 sec)\
+\
+MariaDB [mydata]> show tables;\
++------------------+\
+| Tables_in_mydata |\
++------------------+\
+| model_info       |\
+| myproduct        |\
++------------------+\
+2 rows in set (0.002 sec)\
+\
+MariaDB [mydata]> insert into mydata values(1, 'i7','7700','Kaby Lake');\
+ERROR 1146 (42S02): Table 'mydata.mydata' doesn't exist\
+MariaDB [mydata]> desc myproduct;\
++------------------+------------------+------+-----+---------+----------------+\
+| Field            | Type             | Null | Key | Default | Extra          |\
++------------------+------------------+------+-----+---------+----------------+\
+| mykey            | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| productid        | text             | YES  |     | NULL    |                |\
+| title            | text             | YES  |     | NULL    |                |\
+| ori_price        | int(11)          | YES  |     | NULL    |                |\
+| discount_price   | int(11)          | YES  |     | NULL    |                |\
+| discount_percent | int(11)          | YES  |     | NULL    |                |\
+| delevery         | text             | YES  |     | NULL    |                |\
++------------------+------------------+------+-----+---------+----------------+\
+7 rows in set (0.003 sec)\
+\
+MariaDB [mydata]> desc model_info;\
++------------+------------------+------+-----+---------+----------------+\
+| Field      | Type             | Null | Key | Default | Extra          |\
++------------+------------------+------+-----+---------+----------------+\
+| id         | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| name       | varchar(20)      | NO   |     | NULL    |                |\
+| model_num  | varchar(10)      | NO   |     | NULL    |                |\
+| model_type | varchar(10)      | NO   |     | NULL    |                |\
++------------+------------------+------+-----+---------+----------------+\
+4 rows in set (0.002 sec)\
+\
+MariaDB [mydata]>\
+Session Contents Restored on Jun 28, 2023 9:19 AM\
+Last login: Wed Jun 28 09:19:06 on ttys000\
+ namsukim@gimnamsuui-MacBookAir \uc0\u57520  ~ \u57520  \u57504  main \'b1\u57520 \
+\uc0\u57520  mysql -u root -p\
+Enter password:\
+Welcome to the MariaDB monitor.  Commands end with ; or \\g.\
+Your MariaDB connection id is 6\
+Server version: 10.10.2-MariaDB Homebrew\
+\
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.\
+\
+Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.\
+\
+MariaDB [(none)]> use mydata\
+Reading table information for completion of table and column names\
+You can turn off this feature to get a quicker startup with -A\
+\
+Database changed\
+MariaDB [mydata]> select * from mytable where mode_num like '7700%';\
+ERROR 1146 (42S02): Table 'mydata.mytable' doesn't exist\
+MariaDB [mydata]> select * from myproduct where mode_num like '7700%';\
+ERROR 1054 (42S22): Unknown column 'mode_num' in 'where clause'\
+MariaDB [mydata]> select * from myproduct where model_num like '7700%';\
+ERROR 1054 (42S22): Unknown column 'model_num' in 'where clause'\
+MariaDB [mydata]> desc myproduct;\
++------------------+------------------+------+-----+---------+----------------+\
+| Field            | Type             | Null | Key | Default | Extra          |\
++------------------+------------------+------+-----+---------+----------------+\
+| mykey            | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| productid        | text             | YES  |     | NULL    |                |\
+| title            | text             | YES  |     | NULL    |                |\
+| ori_price        | int(11)          | YES  |     | NULL    |                |\
+| discount_price   | int(11)          | YES  |     | NULL    |                |\
+| discount_percent | int(11)          | YES  |     | NULL    |                |\
+| delevery         | text             | YES  |     | NULL    |                |\
++------------------+------------------+------+-----+---------+----------------+\
+7 rows in set (0.006 sec)\
+\
+MariaDB [mydata]> select * from model_info where model_num like '7700%';\
++----+------+-----------+------------+\
+| id | name | model_num | model_type |\
++----+------+-----------+------------+\
+|  1 | i7   | 7700      | Kaby Lake  |\
+|  2 | i7   | 7700k     | kaby lake  |\
++----+------+-----------+------------+\
+2 rows in set (0.005 sec)\
+\
+MariaDB [mydata]> select * from model_info where name like 'i7';\
++----+------+-----------+------------+\
+| id | name | model_num | model_type |\
++----+------+-----------+------------+\
+|  1 | i7   | 7700      | Kaby Lake  |\
+|  2 | i7   | 7700k     | kaby lake  |\
+|  4 | i7   | 8700      | kaby lake  |\
++----+------+-----------+------------+\
+3 rows in set (0.001 sec)\
+\
+MariaDB [mydata]> select * from model_type where name like '%kaby lake%';\
+ERROR 1146 (42S02): Table 'mydata.model_type' doesn't exist\
+MariaDB [mydata]> select * from model_type where name like '%kaby lake%';\
+ERROR 1146 (42S02): Table 'mydata.model_type' doesn't exist\
+MariaDB [mydata]> select * from model_info where model_type like '%kaby lake%';\
++----+------+-----------+-------------------+\
+| id | name | model_num | model_type        |\
++----+------+-----------+-------------------+\
+|  1 | i7   | 7700      | Kaby Lake         |\
+|  2 | i7   | 7700k     | kaby lake         |\
+|  3 | i5   | 5500k     | kaby lake         |\
+|  4 | i7   | 8700      | kaby lake         |\
+|  5 | i5   | 5500k     | kaby lake refresh |\
++----+------+-----------+-------------------+\
+5 rows in set (0.001 sec)\
+\
+MariaDB [mydata]> select * from model_info where model_type like '%kaby lake%' LIMIT 1;\
++----+------+-----------+------------+\
+| id | name | model_num | model_type |\
++----+------+-----------+------------+\
+|  1 | i7   | 7700      | Kaby Lake  |\
++----+------+-----------+------------+\
+1 row in set (0.001 sec)\
+\
+MariaDB [mydata]> select * from model_info where model_type like '%kaby lake%' LIMIT 2 order by desc;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by desc' at line 1\
+MariaDB [mydata]> select * from model_info where model_type like '%kaby lake%' order by desc limit 2;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc limit 2' at line 1\
+MariaDB [mydata]> select * from model_info where model_type like '%kaby lake%' order by id desc limit 2;\
++----+------+-----------+-------------------+\
+| id | name | model_num | model_type        |\
++----+------+-----------+-------------------+\
+|  5 | i5   | 5500k     | kaby lake refresh |\
+|  4 | i7   | 8700      | kaby lake         |\
++----+------+-----------+-------------------+\
+2 rows in set (0.002 sec)\
+\
+MariaDB [mydata]> delete from model_info where id = 1;\
+Query OK, 1 row affected (0.010 sec)\
+\
+MariaDB [mydata]> select * from model_info;\
++----+------+-----------+-------------------+\
+| id | name | model_num | model_type        |\
++----+------+-----------+-------------------+\
+|  2 | i7   | 7700k     | kaby lake         |\
+|  3 | i5   | 5500k     | kaby lake         |\
+|  4 | i7   | 8700      | kaby lake         |\
+|  5 | i5   | 5500k     | kaby lake refresh |\
++----+------+-----------+-------------------+\
+4 rows in set (0.001 sec)\
+\
+MariaDB [mydata]> insert into mode_info values(6,'i9','9900','Kaby lake refresh');\
+ERROR 1146 (42S02): Table 'mydata.mode_info' doesn't exist\
+MariaDB [mydata]> insert into model_info values(6,'i9','9900','Kaby lake refresh');\
+Query OK, 1 row affected (0.002 sec)\
+\
+MariaDB [mydata]> select * from model_info;\
++----+------+-----------+-------------------+\
+| id | name | model_num | model_type        |\
++----+------+-----------+-------------------+\
+|  2 | i7   | 7700k     | kaby lake         |\
+|  3 | i5   | 5500k     | kaby lake         |\
+|  4 | i7   | 8700      | kaby lake         |\
+|  5 | i5   | 5500k     | kaby lake refresh |\
+|  6 | i9   | 9900      | Kaby lake refresh |\
++----+------+-----------+-------------------+\
+5 rows in set (0.001 sec)\
+\
+MariaDB [mydata]> alter table model_info add column lowest_price int unsigned;\
+Query OK, 0 rows affected (0.038 sec)\
+Records: 0  Duplicates: 0  Warnings: 0\
+\
+MariaDB [mydata]> desc model_info;\
++--------------+------------------+------+-----+---------+----------------+\
+| Field        | Type             | Null | Key | Default | Extra          |\
++--------------+------------------+------+-----+---------+----------------+\
+| id           | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| name         | varchar(20)      | NO   |     | NULL    |                |\
+| model_num    | varchar(10)      | NO   |     | NULL    |                |\
+| model_type   | varchar(30)      | NO   |     | NULL    |                |\
+| lowest_price | int(10) unsigned | YES  |     | NULL    |                |\
++--------------+------------------+------+-----+---------+----------------+\
+5 rows in set (0.004 sec)\
+\
+MariaDB [mydata]> select * from model_info;\
++----+------+-----------+-------------------+--------------+\
+| id | name | model_num | model_type        | lowest_price |\
++----+------+-----------+-------------------+--------------+\
+|  2 | i7   | 7700k     | kaby lake         |         NULL |\
+|  3 | i5   | 5500k     | kaby lake         |         NULL |\
+|  4 | i7   | 8700      | kaby lake         |         NULL |\
+|  5 | i5   | 5500k     | kaby lake refresh |         NULL |\
+|  6 | i9   | 9900      | Kaby lake refresh |         NULL |\
++----+------+-----------+-------------------+--------------+\
+5 rows in set (0.000 sec)\
+\
+MariaDB [mydata]> update model_info set lowest_price 222180 where id =2;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '222180 where id =2' at line 1\
+MariaDB [mydata]> update model_info set lowest_price = 222180 where id =2;\
+Query OK, 1 row affected (0.001 sec)\
+Rows matched: 1  Changed: 1  Warnings: 0\
+\
+MariaDB [mydata]> update model_info set lowest_price = 313020  where id =3;\
+Query OK, 1 row affected (0.001 sec)\
+Rows matched: 1  Changed: 1  Warnings: 0\
+\
+MariaDB [mydata]> update model_info set lowest_price = 298000  where id =4;\
+Query OK, 1 row affected (0.001 sec)\
+Rows matched: 1  Changed: 1  Warnings: 0\
+\
+MariaDB [mydata]> update model_info set lowest_price = 268000  where id =5;\
+Query OK, 1 row affected (0.001 sec)\
+Rows matched: 1  Changed: 1  Warnings: 0\
+\
+MariaDB [mydata]> update model_info set lowest_price = 368000  where id =6;\
+Query OK, 1 row affected (0.001 sec)\
+Rows matched: 1  Changed: 1  Warnings: 0\
+\
+MariaDB [mydata]> select * from model_info where lowest_price < 300000;\
++----+------+-----------+-------------------+--------------+\
+| id | name | model_num | model_type        | lowest_price |\
++----+------+-----------+-------------------+--------------+\
+|  2 | i7   | 7700k     | kaby lake         |       222180 |\
+|  4 | i7   | 8700      | kaby lake         |       298000 |\
+|  5 | i5   | 5500k     | kaby lake refresh |       268000 |\
++----+------+-----------+-------------------+--------------+\
+3 rows in set (0.002 sec)\
+\
+MariaDB [mydata]> select name,model_num from model_info where lowest_price < 300000;\
++------+-----------+\
+| name | model_num |\
++------+-----------+\
+| i7   | 7700k     |\
+| i7   | 8700      |\
+| i5   | 5500k     |\
++------+-----------+\
+3 rows in set (0.001 sec)\
+\
+MariaDB [mydata]> select * from model_info where lowest_price < 400000;\
++----+------+-----------+-------------------+--------------+\
+| id | name | model_num | model_type        | lowest_price |\
++----+------+-----------+-------------------+--------------+\
+|  2 | i7   | 7700k     | kaby lake         |       222180 |\
+|  3 | i5   | 5500k     | kaby lake         |       313020 |\
+|  4 | i7   | 8700      | kaby lake         |       298000 |\
+|  5 | i5   | 5500k     | kaby lake refresh |       268000 |\
+|  6 | i9   | 9900      | Kaby lake refresh |       368000 |\
++----+------+-----------+-------------------+--------------+\
+5 rows in set (0.001 sec)\
+\
+MariaDB [mydata]> insert into model_info (7,'i9','9900k','Kaby lake refresh', 410000);\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '7,'i9','9900k','Kaby lake refresh', 410000)' at line 1\
+MariaDB [mydata]> insert into model_info (7,'i9','9900k','Kaby lake refresh',410000);\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '7,'i9','9900k','Kaby lake refresh',410000)' at line 1\
+MariaDB [mydata]> insert into model_info (7,'i9','9900k','Kaby lake refresh',410000);i\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '7,'i9','9900k','Kaby lake refresh',410000)' at line 1\
+    -> in;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'i\
+in' at line 1\
+MariaDB [mydata]> insert into model_info (id,name,model_num,model_type,lowest_price) values (7,'i9','9900k','kaby lake refresh', 410000);\
+Query OK, 1 row affected (0.002 sec)\
+\
+MariaDB [mydata]> select * from model_info where lowest_price < 400000;\
++----+------+-----------+-------------------+--------------+\
+| id | name | model_num | model_type        | lowest_price |\
++----+------+-----------+-------------------+--------------+\
+|  2 | i7   | 7700k     | kaby lake         |       222180 |\
+|  3 | i5   | 5500k     | kaby lake         |       313020 |\
+|  4 | i7   | 8700      | kaby lake         |       298000 |\
+|  5 | i5   | 5500k     | kaby lake refresh |       268000 |\
+|  6 | i9   | 9900      | Kaby lake refresh |       368000 |\
++----+------+-----------+-------------------+--------------+\
+5 rows in set (0.001 sec)\
+\
+MariaDB [mydata]> select * from model_info where lowest_price > 400000;\
++----+------+-----------+-------------------+--------------+\
+| id | name | model_num | model_type        | lowest_price |\
++----+------+-----------+-------------------+--------------+\
+|  7 | i9   | 9900k     | kaby lake refresh |       410000 |\
++----+------+-----------+-------------------+--------------+\
+1 row in set (0.001 sec)\
+\
+MariaDB [mydata]> insert into model_info (8,'i10','9900k','kaby lake',500000);\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '8,'i10','9900k','kaby lake',500000)' at line 1\
+MariaDB [mydata]> insert into model_info values(8,'i10','9900k','kaby lake',500000);\
+Query OK, 1 row affected (0.001 sec)\
+\
+MariaDB [mydata]> select * from model_info where lowest_price < 400000 order by lowest_price asc;\
++----+------+-----------+-------------------+--------------+\
+| id | name | model_num | model_type        | lowest_price |\
++----+------+-----------+-------------------+--------------+\
+|  2 | i7   | 7700k     | kaby lake         |       222180 |\
+|  5 | i5   | 5500k     | kaby lake refresh |       268000 |\
+|  4 | i7   | 8700      | kaby lake         |       298000 |\
+|  3 | i5   | 5500k     | kaby lake         |       313020 |\
+|  6 | i9   | 9900      | Kaby lake refresh |       368000 |\
++----+------+-----------+-------------------+--------------+\
+5 rows in set (0.002 sec)\
+\
+MariaDB [mydata]> create database ecommerce;\
+Query OK, 1 row affected (0.004 sec)\
+\
+MariaDB [mydata]> use ecommerce;\
+Database changed\
+MariaDB [ecommerce]> show databases;\
++--------------------+\
+| Database           |\
++--------------------+\
+| ecommerce          |\
+| information_schema |\
+| jsp                |\
+| mood               |\
+| mydata             |\
+| mysql              |\
+| nodebird           |\
+| nodejs             |\
+| performance_schema |\
+| profile            |\
+| samp               |\
+| sys                |\
+| test               |\
+| yse_spring_mvc     |\
++--------------------+\
+14 rows in set (0.001 sec)\
+\
+MariaDB [ecommerce]> create table product(\
+    -> code vartext(20) unsigned not null,\
+    -> title vartext(200) not null,\
+    -> ori_price int,\
+    -> discount_price int,\
+    -> discount_percent int,\
+    -> delivery vartext(2),\
+    -> primary key(code)\
+    -> )default charset=utf8;\
+ERROR 4161 (HY000): Unknown data type: 'vartext'\
+MariaDB [ecommerce]> create table product( code vartext(20) unsigned not null, title vartext(200) not null, ori_price int, discount_pricet, discount_percent int, delivery vartext(2), primary key(code) )default charset=utf8;\
+ERROR 4161 (HY000): Unknown data type: 'vartext'\
+MariaDB [ecommerce]> create table product( code varchar(20) not null, title varchar(200) not null, ori_price int, discount_price int, discount_percent int, delivery varchar(2), primary key(code) )default charset=utf8;\
+Query OK, 0 rows affected (0.025 sec)\
+\
+MariaDB [ecommerce]> desc product;\
++------------------+--------------+------+-----+---------+-------+\
+| Field            | Type         | Null | Key | Default | Extra |\
++------------------+--------------+------+-----+---------+-------+\
+| code             | varchar(20)  | NO   | PRI | NULL    |       |\
+| title            | varchar(200) | NO   |     | NULL    |       |\
+| ori_price        | int(11)      | YES  |     | NULL    |       |\
+| discount_price   | int(11)      | YES  |     | NULL    |       |\
+| discount_percent | int(11)      | YES  |     | NULL    |       |\
+| delivery         | varchar(2)   | YES  |     | NULL    |       |\
++------------------+--------------+------+-----+---------+-------+\
+6 rows in set (0.005 sec)\
+\
+MariaDB [ecommerce]> create table ranking(\
+    -> id int unsinged not null auto_increment,\
+    -> category varchar(50) not null,\
+    -> subcategory varchar(50) not null,\
+    -> ranking int not null,\
+    -> product_code varchar(20) not null,\
+    -> primary key(id)\
+    -> )default charset=utf8;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'not null auto_increment,\
+category varchar(50) not null,\
+subcategory varchar(5...' at line 2\
+MariaDB [ecommerce]> create table ranking( id int unsinged auto_increment, category varchar(50) not null, subcategory varchar(50) not null, ranking int not null, product_code varchar(20) not null, primary key(id) )default charset=utf8;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'auto_increment, category varchar(50) not null, subcategory varchar(50) not nu...' at line 1\
+MariaDB [ecommerce]> create table ranking( id int unsinged auto_increment, category varchar(50) not null, subcategory varchar(50) not null, ranking int not null, product_code varchar(20) not null, primary key(id) )default charset=utf8;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'auto_increment, category varchar(50) not null, subcategory varchar(50) not nu...' at line 1\
+MariaDB [ecommerce]> create table ranking( id int unsinged auto_increment, category varchar(50) not null, subcategory varchar(50) not null, ranking int not null, product_code varchar(20) not null, primary key(id) )default charset=utf8;\
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'auto_increment, category varchar(50) not null, subcategory varchar(50) not nu...' at line 1\
+MariaDB [ecommerce]> CREATE TABLE ranking (\
+    ->   id INT UNSIGNED AUTO_INCREMENT,\
+    ->   category VARCHAR(50) NOT NULL,\
+    ->   subcategory VARCHAR(50) NOT NULL,\
+    ->   ranking INT NOT NULL,\
+    ->   product_code VARCHAR(20) NOT NULL,\
+    ->   PRIMARY KEY (id)\
+    -> ) DEFAULT CHARSET=utf8;\
+Query OK, 0 rows affected (0.020 sec)\
+\
+MariaDB [ecommerce]>\
+MariaDB [ecommerce]> insert into product values('21150','\uc0\u49828 \u50948 \u53944 \u48148 \u45768 ',23000,6900,70,'F');\
+Query OK, 1 row affected (0.005 sec)\
+\
+MariaDB [ecommerce]> desc product;\
++------------------+--------------+------+-----+---------+-------+\
+| Field            | Type         | Null | Key | Default | Extra |\
++------------------+--------------+------+-----+---------+-------+\
+| code             | varchar(20)  | NO   | PRI | NULL    |       |\
+| title            | varchar(200) | NO   |     | NULL    |       |\
+| ori_price        | int(11)      | YES  |     | NULL    |       |\
+| discount_price   | int(11)      | YES  |     | NULL    |       |\
+| discount_percent | int(11)      | YES  |     | NULL    |       |\
+| delivery         | varchar(2)   | YES  |     | NULL    |       |\
++------------------+--------------+------+-----+---------+-------+\
+6 rows in set (0.005 sec)\
+\
+MariaDB [ecommerce]> select * from product;\
++-------+-----------------+-----------+----------------+------------------+----------+\
+| code  | title           | ori_price | discount_price | discount_percent | delivery |\
++-------+-----------------+-----------+----------------+------------------+----------+\
+| 21150 | \uc0\u49828 \u50948 \u53944 \u48148 \u45768       |     23000 |           6900 |               70 | F        |\
++-------+-----------------+-----------+----------------+------------------+----------+\
+1 row in set (0.001 sec)\
+\
+MariaDB [ecommerce]> insert into ranking values('\uc0\u54056 \u49496 \u51032 \u47448 ','all',1,21150);\
+ERROR 1136 (21S01): Column count doesn't match value count at row 1\
+MariaDB [ecommerce]> desc ranking;\
++--------------+------------------+------+-----+---------+----------------+\
+| Field        | Type             | Null | Key | Default | Extra          |\
++--------------+------------------+------+-----+---------+----------------+\
+| id           | int(10) unsigned | NO   | PRI | NULL    | auto_increment |\
+| category     | varchar(50)      | NO   |     | NULL    |                |\
+| subcategory  | varchar(50)      | NO   |     | NULL    |                |\
+| ranking      | int(11)          | NO   |     | NULL    |                |\
+| product_code | varchar(20)      | NO   |     | NULL    |                |\
++--------------+------------------+------+-----+---------+----------------+\
+5 rows in set (0.004 sec)\
+\
+MariaDB [ecommerce]> insert into ranking values('\uc0\u54056 \u49496 \u51032 \u47448 ','all',1,'21150');\
+ERROR 1136 (21S01): Column count doesn't match value count at rownking,product_code) values('\uc0\u54056 \u49496 \u51032 \u47448 'ariaDB [ecommerce]> insert into ranking (category,subcateg\
+Query OK, 1 row affected (0.003 sec)\
+\
+MariaDB [ecommerce]> insert into ranking (category,subcategory,ranking,product_code) values('\uc0\u54056 \u49496 \u51032 \u47448 ','\u50668 \u49457 \u51032 \u47448 ',1,'21150');\
+Query OK, 1 row affected (0.001 sec)\
+\
+MariaDB [ecommerce]>}
