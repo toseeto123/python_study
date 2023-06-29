@@ -24,7 +24,8 @@ group by provider;
 select * from ranking where sub_category = '패션의류';
 select * from items limit 10;
 
-select provider,count(*) from items inner join ranking on ranking.item_code = items.item_code
+select provider,count(*) from items 
+inner join ranking on ranking.item_code = items.item_code
 where ranking.main_category = '패션의류' 
 group by provider having  count(*) >= 5;
 
@@ -33,8 +34,8 @@ where ranking.main_category = '신발/잡화'
 group by provider having  count(*) >= 10
 order by count(*) desc;
 
-select avg(ori_price),max(ori_price),min(ori_price),dis_price/discount_percent as dis_price,count(*) from items inner join ranking on ranking.item_code = items.item_code
-where ranking.main_category = '화장품/헤어' 
-group by provider having  count(*) >= 5;
+select avg(dis_price),max(dis_price),min(dis_price) from items
+inner join ranking on ranking.item_code = items.item_code
+where ranking.main_category = '화장품/헤어' ;
 
 
