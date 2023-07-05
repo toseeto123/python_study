@@ -1,0 +1,1038 @@
+{\rtf1\ansi\ansicpg949\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red170\green184\blue199;\red206\green122\blue52;\red100\green153\blue87;
+\red134\green186\blue201;}
+{\*\expandedcolortbl;;\csgenericrgb\c66667\c72157\c78039;\csgenericrgb\c80784\c47843\c20392;\csgenericrgb\c39216\c60000\c34118;
+\csgenericrgb\c52549\c72941\c78824;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 show dbs\cf0 \
+\
+\cf2 use funcoding\cf0 \
+\cf2 show collections\cf0 \
+\
+\cf2 db.test.find
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\cf2 db.test.drop
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\
+\cf2 use funcoding\cf0 \
+\cf2 db.createCollection
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  \cf4 "log"
+\f1\b \cf3 ,\{
+\f0\b0 \cf2 capped
+\f1\b \cf3 :
+\f0\b0 true
+\f1\b ,
+\f0\b0 \cf2 size
+\f1\b \cf3 :
+\f0\b0 \cf5 5242880
+\f1\b \cf3 ,
+\f0\b0 \cf2 max
+\f1\b \cf3 :
+\f0\b0 \cf5 5000
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 show collections\cf0 \
+\cf2 db.log.isCapped
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\cf2 db.log.renameCollection
+\f1\b \cf3 (
+\f0\b0 \cf4 "test"
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\cf2 show collections\cf0 \
+\
+\cf2 db.createCollection
+\f1\b \cf3 (
+\f0\b0 \cf4 "users"
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\cf2 use users\cf0 \
+\
+\cf2 db.users.insertOne
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 subject
+\f1\b \cf3 :
+\f0\b0 \cf4 "coding"
+\f1\b \cf3 ,
+\f0\b0 \cf2 author
+\f1\b \cf3 :
+\f0\b0 \cf4 "funcoding"
+\f1\b \cf3 ,
+\f0\b0 \cf2 views
+\f1\b \cf3 :
+\f0\b0 \cf5 50
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\cf2 db.users.insertMany
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 [
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "coffee"
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "xyz"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 50\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "Coffee Shopping"
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "efg"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 5\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "Baking a cake"
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "abc"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 90\cf2   
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "baking"
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "xyz"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 100\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "Caf\'e9 Con Leche"
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "abc"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 200\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "\uc0\u1057 \u1099 \u1088 \u1085 \u1080 \u1082 \u1080 "
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "jkl"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 80\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "coffee and cream"
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "efg"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 10\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "Cafe con Leche"
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "xyz"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 10\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "coffees"
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "xyz"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 10\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2      
+\f1\b \cf3 \{
+\f0\b0 \cf2  subject
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "coffee1"
+\f1\b \cf3 ,
+\f0\b0 \cf2  author
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "xyz"
+\f1\b \cf3 ,
+\f0\b0 \cf2  views
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 10\cf2  
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+\cf2    
+\f1\b \cf3 ]
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\cf2 db.users.drop
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\
+\cf2 db.createCollection
+\f1\b \cf3 (
+\f0\b0 \cf4 "users"
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\cf2 db.users.insertMany
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2     
+\f1\b \cf3 [
+\f0\b0 \cf0 \
+\cf2     
+\f1\b \cf3 \{
+\f0\b0 \cf2  name
+\f1\b \cf3 :
+\f0\b0 \cf4 "David"
+\f1\b \cf3 ,
+\f0\b0 \cf2  age
+\f1\b \cf3 :
+\f0\b0 \cf5 45
+\f1\b \cf3 ,
+\f0\b0 \cf2  address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u49436 \u50872 "\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2     
+\f1\b \cf3 \{
+\f0\b0 \cf2  name
+\f1\b \cf3 :
+\f0\b0 \cf4 "DaveLee"
+\f1\b \cf3 ,
+\f0\b0 \cf2  age
+\f1\b \cf3 :
+\f0\b0 \cf5 25
+\f1\b \cf3 ,
+\f0\b0 \cf2  address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u44221 \u44592 \u46020 "\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2     
+\f1\b \cf3 \{
+\f0\b0 \cf2  name
+\f1\b \cf3 :
+\f0\b0 \cf4 "Andy"
+\f1\b \cf3 ,
+\f0\b0 \cf2  age
+\f1\b \cf3 :
+\f0\b0 \cf5 50
+\f1\b \cf3 ,
+\f0\b0 \cf2  hobby
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u44264 \u54532 "
+\f1\b \cf3 ,
+\f0\b0 \cf2  address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u44221 \u44592 \u46020 "\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2     
+\f1\b \cf3 \{
+\f0\b0 \cf2  name
+\f1\b \cf3 :
+\f0\b0 \cf4 "Kate"
+\f1\b \cf3 ,
+\f0\b0 \cf2  age
+\f1\b \cf3 :
+\f0\b0 \cf5 35
+\f1\b \cf3 ,
+\f0\b0 \cf2  address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u49688 \u50896 \u49884 "\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2     
+\f1\b \cf3 \{
+\f0\b0 \cf2  name
+\f1\b \cf3 :
+\f0\b0 \cf4 "Brown"
+\f1\b \cf3 ,
+\f0\b0 \cf2  age
+\f1\b \cf3 :
+\f0\b0 \cf5 8\cf2  
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+\cf2     
+\f1\b \cf3 ]
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\
+\cf2 db.users.find
+\f1\b \cf3 (\{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf4 "DaveLee"
+\f1\b \cf3 \},\{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 ,
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 ,
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 \})
+\f0\b0 \cf0 \
+\cf2 db.users.find
+\f1\b \cf3 (\{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf4 "Kate"
+\f1\b \cf3 \},\{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 ,
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 ,
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 ,
+\f0\b0 \cf2 _id
+\f1\b \cf3 :
+\f0\b0 \cf5 0
+\f1\b \cf3 \})
+\f0\b0 \cf0 \
+\
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 age
+\f1\b \cf3 :\{
+\f0\b0 \cf2 $gt
+\f1\b \cf3 :
+\f0\b0 \cf5 20
+\f1\b \cf3 \}\},
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 ,
+\f0\b0 \cf2 _id
+\f1\b \cf3 :
+\f0\b0 \cf5 0
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $eq
+\f1\b \cf3 :
+\f0\b0 \cf5 50
+\f1\b \cf3 \},
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u44221 \u44592 \u46020 "
+\f1\b \cf3 \},
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 ,
+\f0\b0 \cf2 _id
+\f1\b \cf3 :
+\f0\b0 \cf5 0
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 age
+\f1\b \cf3 :\{
+\f0\b0 \cf2 $lt
+\f1\b \cf3 :
+\f0\b0 \cf5 30
+\f1\b \cf3 \}\},
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 ,
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 1
+\f1\b \cf3 ,
+\f0\b0 \cf2 _id
+\f1\b \cf3 :
+\f0\b0 \cf5 0
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 \{
+\f0\b0 \cf2 $and
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 [\{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u49436 \u50872 "
+\f1\b \cf3 \},\{
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 45
+\f1\b \cf3 \}]\}
+\f0\b0 \cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $or
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 [
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u49436 \u50872 "
+\f1\b \cf3 \},\{
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 45
+\f1\b \cf3 \}]\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $not
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $eq
+\f1\b \cf3 :
+\f0\b0 \cf5 45
+\f1\b \cf3 \}\}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $ne
+\f1\b \cf3 :
+\f0\b0 \cf5 45
+\f1\b \cf3 \}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 \{
+\f0\b0 \cf2 $or
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 [
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf4 "Brown"
+\f1\b \cf3 \},\{
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 35
+\f1\b \cf3 \}]\}
+\f0\b0 \cf0 \
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 \{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf2 /^Da/
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u44221 \u44592 \u46020 "
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf2 .sort
+\f1\b \cf3 (\{
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf2 -\cf5 1
+\f1\b \cf3 \})
+\f0\b0 \cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 ()
+\f0\b0 \cf2 .count
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\cf2 db.users.count
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\cf2 db.users.count
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 address
+\f1\b \cf3 :\{
+\f0\b0 \cf2 $exists
+\f1\b \cf3 :
+\f0\b0 true
+\f1\b \}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $exists
+\f1\b \cf3 :
+\f0\b0 true
+\f1\b \}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $exists
+\f1\b \cf3 :
+\f0\b0 false
+\f1\b \}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.distinct
+\f1\b \cf3 (
+\f0\b0 \cf4 "address"
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\cf2 db.users.find
+\f1\b \cf3 ()
+\f0\b0 \cf2 .limit
+\f1\b \cf3 (
+\f0\b0 \cf5 3
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\
+\cf2 db.users.insertMany
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 [
+\f0\b0 \cf0 \
+
+\f1\b \cf3 \{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u49688 \u51652 "
+\f1\b \cf3 ,
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 25
+\f1\b \cf3 ,
+\f0\b0 \cf2 hobbies
+\f1\b \cf3 :[
+\f0\b0 \cf4 "\uc0\u46021 \u49436 "
+\f1\b \cf3 ,
+\f0\b0 \cf4 "\uc0\u50689 \u54868 "
+\f1\b \cf3 ,
+\f0\b0 \cf4 "\uc0\u50836 \u47532 "
+\f1\b \cf3 ]\},
+\f0\b0 \cf0 \
+
+\f1\b \cf3 \{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u46041 \u54788 "
+\f1\b \cf3 ,
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 30
+\f1\b \cf3 ,
+\f0\b0 \cf2 hobbies
+\f1\b \cf3 :[
+\f0\b0 \cf4 "\uc0\u52629 \u44396 "
+\f1\b \cf3 ,
+\f0\b0 \cf4 "\uc0\u51020 \u50501 "
+\f1\b \cf3 ,
+\f0\b0 \cf4 "\uc0\u50689 \u54868 "
+\f1\b \cf3 ]\},
+\f0\b0 \cf0 \
+
+\f1\b \cf3 \{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u54812 \u51652 "
+\f1\b \cf3 ,
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 35
+\f1\b \cf3 ,
+\f0\b0 \cf2 hobbies
+\f1\b \cf3 :[
+\f0\b0 \cf4 "\uc0\u50836 \u47532 "
+\f1\b \cf3 ,
+\f0\b0 \cf4 "\uc0\u50668 \u54665 "
+\f1\b \cf3 ,
+\f0\b0 \cf4 "\uc0\u46021 \u49436 "
+\f1\b \cf3 ]\}
+\f0\b0 \cf0 \
+
+\f1\b \cf3 ]
+\f0\b0 \cf0 \
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\
+\cf2 db.users.find
+\f1\b \cf3 (\{
+\f0\b0 \cf2 hobbies
+\f1\b \cf3 :\{
+\f0\b0 \cf2 $all
+\f1\b \cf3 :[
+\f0\b0 \cf4 "\uc0\u52629 \u44396 "
+\f1\b \cf3 ,
+\f0\b0 \cf4 "\uc0\u51020 \u50501 "
+\f1\b \cf3 ]\}\})
+\f0\b0 \cf0 \
+\cf2 db.users.find
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 hobbies
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $in
+\f1\b \cf3 :[
+\f0\b0 \cf4 "\uc0\u52629 \u44396 "
+\f1\b \cf3 ,
+\f0\b0 \cf4 "\uc0\u50836 \u47532 "
+\f1\b \cf3 ]\}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.updateMany
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2  age
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2  $gt
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 25
+\f1\b \cf3 \}\},
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2  $set 
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u49436 \u50872 "
+\f1\b \cf3 \}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (\{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u49436 \u50872 "
+\f1\b \cf3 \})
+\f0\b0 \cf0 \
+\cf2 db.users.updateMany
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u49436 \u50872 "
+\f1\b \cf3 \},\{
+\f0\b0 \cf2 $inc
+\f1\b \cf3 :\{
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 3
+\f1\b \cf3 \}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (\{
+\f0\b0 \cf2  address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u49436 \u50872 "
+\f1\b \cf3 \})
+\f0\b0 \cf0 \
+\
+\cf2 db.users.updateMany
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 age 
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $gt
+\f1\b \cf3 :
+\f0\b0 \cf5 30
+\f1\b \cf3 \}\},
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $set 
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u46041 \u53444 "
+\f1\b \cf3 \}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 (\{
+\f0\b0 \cf2 address
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u46041 \u53444 \u49884 "
+\f1\b \cf3 \})
+\f0\b0 \cf0 \
+\cf2 db.users.find
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\
+\cf2 db.users.updateOne
+\f1\b \cf3 (
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2  name
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u50976 \u51652 "
+\f1\b \cf3 \},\{
+\f0\b0 \cf2 $set
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 age
+\f1\b \cf3 :
+\f0\b0 \cf5 26
+\f1\b \cf3 \}\})
+\f0\b0 \cf0 \
+\cf2 db.users.updateOne
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 \{
+\f0\b0 \cf2  name
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "\uc0\u46041 \u54788 "\cf2  
+\f1\b \cf3 \},
+\f0\b0 \cf2  \cf0 \
+
+\f1\b \cf3 \{
+\f0\b0 \cf2  $set
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf4 "name"
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf4 "\uc0\u46041 \u54788 2\u49464 "
+\f1\b \cf3 ,
+\f0\b0 \cf2  age
+\f1\b \cf3 :
+\f0\b0 \cf2  \cf5 31
+\f1\b \cf3 ,
+\f0\b0 \cf2  hobbies
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 [
+\f0\b0 \cf4 "\uc0\u52629 \u44396 "
+\f1\b \cf3 ,
+\f0\b0 \cf2  \cf4 "\uc0\u51020 \u50501 "
+\f1\b \cf3 ,
+\f0\b0 \cf2  \cf4 "\uc0\u50689 \u54868 "
+\f1\b \cf3 ]\}\}
+\f0\b0 \cf0 \
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.deleteMany
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 age 
+\f1\b \cf3 :
+\f0\b0 \cf2  
+\f1\b \cf3 \{
+\f0\b0 \cf2 $lt
+\f1\b \cf3 :
+\f0\b0 \cf5 30
+\f1\b \cf3 \}\}
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 ()
+\f0\b0 \cf0 \
+\cf2 db.users.deleteOne
+\f1\b \cf3 (
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 \{
+\f0\b0 \cf2 name
+\f1\b \cf3 :
+\f0\b0 \cf4 "\uc0\u46041 \u54788 2\u49464 "
+\f1\b \cf3 \}
+\f0\b0 \cf0 \
+
+\f1\b \cf3 )
+\f0\b0 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 db.users.find
+\f1\b \cf3 ()}
